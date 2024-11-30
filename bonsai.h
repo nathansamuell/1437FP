@@ -9,7 +9,9 @@ class Bonsai : public Plant {
     public:
         // constructors
         Bonsai();
+        ~Bonsai() override;
         Bonsai(float, float, float);
+
         void generateArt() override;
 
         // Grow

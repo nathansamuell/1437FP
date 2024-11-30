@@ -23,23 +23,23 @@ void Plant::setL(float w, float f, float s) {
     sunlightL = s;
 }
 
-void setWC(float w) {
-    waterC = w;
-}
-void setFC(float f) {
-    fertilizerC = f;
-}
-void setSC(float s) {
-    sunlightC = c;
-}
-void setWL(float w) {
-    waterL = w;
-}
-void setFL(float f) {
-    fertilizerL = f;
-}
-void setSL(float s) {
-    sunlightL = s;
-}
+// void Plant::setWC(float w) {
+//     waterC = w;
+// }
+// void Plant::setFC(float f) {
+//     fertilizerC = f;
+// }
+// void Plant::setSC(float s) {
+//     sunlightC = s;
+// }
+// void Plant::setWL(float w) {
+//     waterL = w;
+// }
+// void Plant::setFL(float f) {
+//     fertilizerL = f;
+// }
+// void Plant::setSL(float s) {
+//     sunlightL = s;
+// }
 
 

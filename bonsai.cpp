@@ -2,19 +2,53 @@
 
 // constructors
 
-Bonsai::Bonsai() : Plant() {
+Bonsai::Bonsai() : Plant(2, 4, 3) {
     this->generateArt();
-    for(int i = 0, i < 10, i++) {
-        std::cout << ascii[i];
-    }
+    setL(8, 8, 8);
 }
 
 Bonsai::Bonsai(float s, float f, float w)
  : Plant(s, f, w) {
+    setL(10, 10, 10);
     this->generateArt();
 }
 
-Bonsai::generateArt() {
+
+Bonsai::~Bonsai() {
+    return;
+};
+
+int Bonsai::Grow() {
+    // FIXME: add grow stuff
+    age++;
+    waterL -= waterC;
+    fertilizerL -= fertilizerC;
+    sunlightL -= sunlightC;
+    if(waterL < 0 || fertilizerL < 0 || sunlightL < 0) {
+        hp--;
+        std::cout << "Oh no! Your Bonsai is out of a key nutrient!" << std::endl;
+    } else if(growthStage != 10){
+        growthStage++;
+        std::cout << "Your bonsai has grown!\n" << std::endl;
+        std::cout << ascii[growthStage];
+    } else {
+        std::cout << "Your bonsai has reached it's maximum growth!\nEnter your name to save the tree: ";
+        std::string name;
+        std::getline(std::cin, name);
+        std::ofstream file("plants.txt", std::ios::app);
+        file << ascii[growthStage];
+        return 2;
+
+    }
+    if(hp == 0) {
+        std::cout << "Oh no! Your Bonsai has died." << std::endl;
+        return 1;
+    }
+
+    return 0;
+}
+
+void Bonsai::generateArt() {
     ascii[0] = 
         "    *\n"
         "   / \\\n"
