@@ -4,9 +4,9 @@
 Tulip::Tulip() : Plant(3, 1, 2) {
     setL(6, 6, 6);
     this->generateArt();
-    for(int i = 0; i < 10; i++) {
-        std::cout << this->ascii[i];
-    }
+    // for(int i = 0; i < 10; i++) {
+    //     std::cout << this->ascii[i];
+    // }
 }
 
 Tulip::Tulip(float s, float f, float w)

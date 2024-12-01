@@ -4,9 +4,9 @@
 Sunflower::Sunflower() : Plant(1, 1, 1) {
     setL(8, 8, 8);
     this->generateArt();
-    for (int i = 0; i < 10; i++) {
-        std::cout << ascii[i] << std::endl;
-    }
+    // for (int i = 0; i < 10; i++) {
+    //     std::cout << ascii[i] << std::endl;
+    // }
 }
 
 Sunflower::Sunflower(float s, float f, float w) : Plant(s, f, w) {
