@@ -1,3 +1,4 @@
+// bonsai.h
 #ifndef BONSAI_H
 #define BONSAI_H
 
@@ -14,13 +15,17 @@ class Bonsai : public Plant {
         void generateArt() override;
 
         // Grow
+        int Water() override;
+        int Sun() override;
+        int Fertilize() override;
         int Grow() override;
         int Prune() override;
+
+        std::string getType() const override { return "Bonsai"; } // new method
 
     private:
         std::string ascii[10]; 
 
 };
-
 
 #endif

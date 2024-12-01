@@ -4,9 +4,6 @@
 Sunflower::Sunflower() : Plant(1, 1, 1) {
     setL(8, 8, 8);
     this->generateArt();
-    // for (int i = 0; i < 10; i++) {
-    //     std::cout << ascii[i] << std::endl;
-    // }
 }
 
 Sunflower::Sunflower(float s, float f, float w) : Plant(s, f, w) {
@@ -14,32 +11,60 @@ Sunflower::Sunflower(float s, float f, float w) : Plant(s, f, w) {
     this->generateArt();
 }
 
+int Sunflower::Water() {
+    waterL += 2;
+    if(waterL > 10) {
+        waterL = 10;
+    }
+    int returnval = Grow();
+    return returnval;
+}
+
+int Sunflower::Sun() {
+    sunlightL += 2;
+    if(sunlightL > 10) {
+        sunlightL = 10;
+    }
+    int returnval = Grow();
+    return returnval;
+}
+
+int Sunflower::Fertilize() {
+    fertilizerL += 2;
+    if(fertilizerL > 10) {
+        fertilizerL = 10;
+    }
+    int returnval = Grow();
+    return returnval;
+}
+
 int Sunflower::Grow() {
+    if (growthStage >= 9) {
+        std::cout << "Your Sunflower has reached its maximum growth!" << std::endl;
+        std::cout << ascii[growthStage] << std::endl;
+        return 2;
+    }
+
     age++;
     waterL -= waterC;
     fertilizerL -= fertilizerC;
     sunlightL -= sunlightC;
-    
+
     if(waterL < 0 || fertilizerL < 0 || sunlightL < 0) {
         hp--;
         std::cout << "Oh no! Your Sunflower is out of a key nutrient!" << std::endl;
-    } else if(growthStage != 10) {
+    } else {
         growthStage++;
         std::cout << "Your Sunflower has grown!\n" << std::endl;
-        std::cout << ascii[growthStage];
-    } else {
-        std::cout << "Your Sunflower has reached it's maximum growth!\nEnter your name to save the flower: ";
-        std::string name;
-        std::getline(std::cin, name);
-        std::ofstream file("plants.txt", std::ios::app);
-        file << ascii[growthStage];
-        return 2;
     }
-    
+
+    std::cout << ascii[growthStage] << std::endl;
+
     if(hp == 0) {
         std::cout << "Oh no! Your Sunflower has died." << std::endl;
+        return 1;
     }
-    
+
     return 0;
 }
 
