@@ -3,20 +3,18 @@
 // constructors
 
 Bonsai::Bonsai() : Plant(2, 4, 3) {
-    this->generateArt();
     setL(8, 8, 8);
+    this->generateArt();
+    for (int i = 0; i < 10; i++) {
+        std::cout << ascii[i] << std::endl;
+    }
 }
 
 Bonsai::Bonsai(float s, float f, float w)
  : Plant(s, f, w) {
-    setL(10, 10, 10);
+    setL(8, 8, 8);
     this->generateArt();
 }
-
-
-Bonsai::~Bonsai() {
-    return;
-};
 
 int Bonsai::Grow() {
     // FIXME: add grow stuff
@@ -48,113 +46,129 @@ int Bonsai::Grow() {
     return 0;
 }
 
+int Bonsai::Prune() {
+    if (age % 3 == 0) {
+        growthStage--;
+        if(waterC > 0 && fertilizerC > 0 && sunlightC > 0) {
+            waterC--;
+            fertilizerC--;
+            sunlightC--;
+        } else {
+            std::cout << "Cannot prune! Bonsai is already at maximum efficiency!" << std::endl;
+            return 1;
+        }
+        if (growthStage < 0) {
+            growthStage = 0;
+            std::cout << "Cannot prune! Bonsai is too small!" << std::endl;
+            return 1;
+        } else 
+        return 0;
+    }
+    std::cout << "Cannot prune! Bonsai was pruned too recently!" << std::endl;
+    return 1;
+}
+
 void Bonsai::generateArt() {
+    using namespace Constants;
+
     ascii[0] = 
-        "    *\n"
+        GREEN + "    *\n"
         "   / \\\n"
         "  /   \\\n"
         " /     \\\n"
-        "/   .   \\\n"
-        " \\_____/\n\n";
+        "/   .   \\\n" +
+        BROWN + " \\_____/\n\n" + RESET;
 
-    
     ascii[1] = 
-        "     /\\\n"
+        GREEN + "     /\\\n"
         "    /  \\\n"
         "   /    \\\n"
         "  /  |   \\\n"
-        " /   |    \\\n"
-        "|    +     |\n"
-        " \\________/\n\n";
+        " /   |    \\\n" + 
+        BROWN + "|    +     |\n"
+        " \\________/\n\n" + RESET;
 
     ascii[2]= 
-        "     _____\n"
+        GREEN + "     _____\n"
         "    /  /\\  \\\n"
         "   /  /  \\   \\\n"
         "  /  /____\\  \\\n"
-        " /___________\\\n"
-        " |  rich earth |\n"
-        "   |   |   |\n";
+        " /___________\\\n" +
+        BROWN + " |  #@####*#$## |\n"
+        "   |   |   |\n" + RESET;
 
     ascii[3] = 
-        "     _____\n"
+        GREEN + "     _____\n"
         "   _/  /\\  \\__\n"
         "  /  /\\    /   \\\n"
         " /  /  \\  /     \\\n"
-        "|__________+______|\n"
-        " | nutrient soil |\n"
-        "   |   |    |\n\n";
+        "|__________+______|\n" +
+        BROWN + " |   *   *   |\n"
+        "   |  *  *  |\n\n" + RESET;
 
     ascii[4] = 
-    "     _____\n"
-    "   _/  /\\  \\__\n"
-    "  /  /\\    /   \\\n"
-    " /  /  \\  /     \\\n"
-    "|__________+______|\n"
-    "    _____\n"
-    "   /     \\\n"
-    "  (       )\n"
-    "  (  [ ]  )\n"
-    "   \\_____/ \n\n";
-
-    ascii[5] = 
-        "     _____\n"
+        GREEN + "     _____\n"
         "   _/  /\\  \\__\n"
         "  /  /\\    /   \\\n"
         " /  /  \\  /     \\\n"
-        "|__________+______|\n"
-        "    _____\n"
-        "   /     \\\n"
-        "  (       )\n"
-        "  (  [ ]  )\n"
-        "   \\_____/ \n\n";
+        "|__________+______|\n" +
+        BROWN + "    __" + DARK_BROWN + "//" + BROWN + "___\n"
+        "   |  *  *  |\n"
+        "   |  *  *  |\n"
+        "   \\________/ \n\n" + RESET;
+
+    ascii[5] = 
+        GREEN + "     _____\n"
+        "   _/  /\\  \\__\n"
+        "  /  /\\    /   \\\n"
+        " /  /  \\  /     \\\n"
+        "|__________+______|\n" +
+        BROWN + "    __" + DARK_BROWN + "//" + BROWN + "___\n"
+        "   |  *  *  |\n"
+        "   |  *  *  |\n"
+        "   \\________/ \n\n" + RESET;
 
     ascii[6] = 
-        "       _____\n"
-        "     _/  /\\  \\__\n"
-        "    /  /\\    /   \\\n"
-        "   /  /  \\  /     \\\n"
-        "  |__________+______|\n"
-        "    _______\n"
-        "   /         \\\n"
-        "  (           )\n"
-        "  (   [===]   )\n"
-        "   \\_________/ \n";
+        GREEN + "     _____\n"
+        "   _/  /\\  \\__\n"
+        "  /  /\\    /   \\\n"
+        " /  /  \\  /     \\\n"
+        "|__________+______|\n" +
+        BROWN + "    ___" + DARK_BROWN + "//" + BROWN + "____\n"
+        "   |  *  *  |\n"
+        "   |  *  *  |\n"
+        "   \\________/ \n" + RESET;
 
     ascii[7] = 
-        "       _____\n"
-        "     _/  /\\  \\__\n"
-        "    /  /\\    /   \\\n"
-        "   /  /  \\  /     \\\n"
-        "  |__________+______|\n"
-        "   _________\n"
-        "  /           \\\n"
-        " (             )\n"
-        " (   {~~~~~}   )\n"
-        "  \\___________/ \n";
+        GREEN + "     _____\n"
+        "   _/  /\\  \\__\n"
+        "  /  /\\    /   \\\n"
+        " /  /  \\  /     \\\n"
+        "|__________+______|\n" +
+        BROWN + "   ____" + DARK_BROWN + "//" + BROWN + "____\n"
+        "   |  *  *  |\n"
+        "   |  *  *  |\n"
+        "   \\________/ \n" + RESET;
 
     ascii[8] = 
-        "       _____\n"
-        "     _/ /|\\  \\__\n"
-        "    /  /   \\    \\\n"
-        "   /  / |   \\    \\\n"
-        "  |__________+______|\n"
-        "   ____________\n"
-        "  /            \\\n"
-        " (              )\n"
-        " (   {#####}    )\n"
-        "  \\____________/ \n";
+        GREEN + "     _____\n"
+        "   _/  /\\  \\__\n"
+        "  /  /\\    /   \\\n"
+        " /  /  \\  /     \\\n"
+        "|__________+______|\n" +
+        BROWN + "   _____" + DARK_BROWN + "//" + BROWN + "___\n"
+        "   |  *  *  |\n"
+        "   |  *  *  |\n"
+        "   \\________/ \n" + RESET;
 
     ascii[9] = 
-        "       _____\n"
-        "     _/ /|\\  \\__\n"
-        "    /  /   \\    \\\n"
-        "   /  / |   \\    \\\n"
-        "  |__________+______|\n"
-        "   ____________\n"
-        "  /            \\\n"
-        " (              )\n"
-        " (   {^^^^^}    )\n"
-        "  \\____________/ \n"
-        "    ^^^^^^^^^^^\n\n";
+        GREEN + "     _____\n"
+        "   _/  /\\  \\__\n"
+        "  /  /\\    /   \\\n"
+        " /  /  \\  /     \\\n"
+        "|__________+______|\n" +
+        BROWN + "   _____" + DARK_BROWN + "//" + BROWN + "___\n"
+        "   |  *  *  |\n"
+        "   |  *  *  |\n"
+        "   \\________/ \n" + RESET;
 }

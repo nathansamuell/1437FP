@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include "plant.h"
 #include "bonsai.h"
+#include "tulip.h"
+#include "sunflower.h"
 #include "constants.h"
-#include <string>
 
 void initGame();
 void recordGame();
@@ -12,7 +13,9 @@ void recordGame();
 int main() {
     system(Constants::CLEAR_SCREEN);
     initGame();
-    // Bonsai testBonsai = Bonsai();
+    Bonsai testB = Bonsai();
+    // Tulip testT = Tulip();
+    // Sunflower testS = Sunflower();
     return 0;
 }
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include "constants.h"
 
 class Plant {  // base class to inherit from
     public:
@@ -18,10 +19,12 @@ class Plant {  // base class to inherit from
         // float getWC() const {return waterC;};       // get each value individually
         // float getFC() const {return fertilizerC;};
         // float getSC() const {return sunlightC;};
-        // float getWL() const {return waterL;};
-        // float getFL() const {return fertilizerL;};
-        // float getSL() const {return sunlightL;};
+        float getWL() const {return waterL;};
+        float getFL() const {return fertilizerL;};
+        float getSL() const {return sunlightL;};
         int getAge() const {return age;};
+        int getHP() const {return hp;};
+        int getStage() const {return growthStage;};
         void setC(float, float, float);             // update all rates
         void setL(float, float, float);             // update all levels
         // void setWC(float w);                        // update individually
@@ -33,7 +36,7 @@ class Plant {  // base class to inherit from
 
         // operators
         virtual int Grow() = 0; // virtual function to operate plants, will work differently for all of them each turn
-        virtual ~Plant() = default;
+        virtual int Prune() = 0;
 
     protected:
         int hp = 5;

@@ -1,15 +1,15 @@
-#ifndef BONSAI_H
-#define BONSAI_H
+#ifndef TULIP_H
+#define TULIP_H
 
 #include "plant.h"
 #include <string>
 #include <iostream>
 
-class Bonsai : public Plant {
+class Tulip : public Plant {
     public:
         // constructors
-        Bonsai();
-        Bonsai(float, float, float);
+        Tulip();
+        Tulip(float, float, float);
 
         void generateArt() override;
 
@@ -18,9 +18,8 @@ class Bonsai : public Plant {
         int Prune() override;
 
     private:
-        std::string ascii[10]; 
+        std::string ascii[10];
 
 };
-
 
 #endif
